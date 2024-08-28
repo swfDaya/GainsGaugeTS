@@ -7,7 +7,10 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "install-client": "npm install",
+    "build-client": "npm run build",
+    "start-client": "npm run start"
   },
   "dependencies": {
     "react": "^18.3.1",
