@@ -110,7 +110,7 @@ const Home = () => {
 
     const [ countDownKey, setCountDownKey ] = useState<any>(0)
     const onCountDownKeyChange = () => {
-        setCountDownKey((prev) => prev + 1)
+        setCountDownKey((prev: number) => prev + 1)
     }
 
     // set, reps, weight control
@@ -209,11 +209,11 @@ const Home = () => {
                         className = 'home__body__center__ex__details__scroll'
                         >
                             {
-                                Array.from({length: 4}, (_, index) => index).map(
+                                Array.from({length: 4}, (_, index: number) => index).map(
                                     (_, index) => {
                                         return(
                                             <div
-                                            key = {index}
+                                            key = {index as number}
                                             className = 'home__body__center__ex__details__scroll__each'
                                             style={{
                                                 borderBottom: index === 3 ? "" : "0.25px solid #a1a6b1",
