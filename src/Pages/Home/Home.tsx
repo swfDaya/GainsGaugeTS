@@ -220,7 +220,7 @@ const Home = () => {
                                                 backgroundColor: index === currentSet ? "#0588F8" : "",
                                                 color: index === currentSet ? "white" : "black"
                                             }}
-                                            onClick={() => onSetSelect(index)}
+                                            onClick={() => onSetSelect({index})}
                                             >
                                                 <div
                                                 className = 'home__body__center__ex__details__scroll__each__sno to__center'
