@@ -11,7 +11,7 @@ const Home = () => {
     // rep scroll controls
     const [ selectedRep, setSelectedRep ] = useState<any>(10)
     const scrollRepRef = useRef<HTMLDivElement>(null)
-    const scrollRepRefEach = useRef<HTMLDivElement>([])
+    const scrollRepRefEach = useRef<(HTMLDivElement | null)[]>([])
 
     const onRepScroll = () => {
         if (scrollRepRef.current) {
@@ -22,7 +22,7 @@ const Home = () => {
     // weight scroll controls
     const [ selectedWeight, setSelectedWeight ] = useState<any>(33)
     const scrollWeightRef = useRef<HTMLDivElement>(null)
-    const scrollWeightRefEach = useRef<HTMLDivElement>([])
+    const scrollWeightRefEach = useRef<(HTMLDivElement | null)[]>([])
 
     const onWeightScroll = () => {
         if (scrollWeightRef.current) {
@@ -35,12 +35,12 @@ const Home = () => {
         () => {
             setTimeout(
                 () => {
-                    scrollRepRefEach.current[selectedRep].scrollIntoView()
+                    scrollRepRefEach.current[selectedRep as number]!.scrollIntoView()
                 }, 500
             )
             setTimeout(
                 () => {
-                    scrollWeightRefEach.current[selectedWeight].scrollIntoView()
+                    scrollWeightRefEach.current[selectedWeight as number]!.scrollIntoView()
                 }, 2000
             )
         }, []
@@ -48,9 +48,9 @@ const Home = () => {
 
     // rendertime for rest countdown
     const renderTime = ({ remainingTime }: { remainingTime: any }) => {
-        const currentTime = useRef<HTMLDivElement>(remainingTime);
-        const prevTime = useRef<HTMLDivElement>(null);
-        const isNewTimeFirstTick = useRef<HTMLDivElement>(false);
+        const currentTime = useRef<number | null>(remainingTime);
+        const prevTime = useRef<number | null>(null);
+        const isNewTimeFirstTick = useRef<boolean>(false);
         const [, setOneLastRerender] = useState<any>(0);
       
         if (currentTime.current !== remainingTime) {
@@ -64,7 +64,7 @@ const Home = () => {
         // force one last re-render when the time is over to tirgger the last animation
         if (remainingTime === 0) {
           setTimeout(() => {
-            setOneLastRerender((val) => val + 1);
+            setOneLastRerender((val: number) => val + 1);
           }, 20);
         }
       
@@ -72,12 +72,12 @@ const Home = () => {
       
         return (
           <div className="time-wrapper">
-            <div key={remainingTime} className={`time ${isTimeUp ? "up" : ""}`}>
+            <div key={remainingTime as number} className={`time ${isTimeUp ? "up" : ""}`}>
               {remainingTime}
             </div>
             {prevTime.current !== null && (
               <div
-                key={prevTime.current}
+                key={prevTime.current as number}
                 className={`time ${!isTimeUp ? "down" : ""}`}
               >
                 {prevTime.current}
@@ -89,17 +89,17 @@ const Home = () => {
 
     // countdown controls
 
-    const [ inRest, setInRest ] = useState<any>(false)
+    const [ inRest, setInRest ] = useState<boolean>(false)
     const restSwitch = () => {
         setInRest(
-            (prev) => prev ? false : true
+            (prev: boolean) => prev ? false : true
         )
     }
 
-    const [ restTime, setRestTime ] = useState<any>(10)
-    const onRestTimeChange = ({ time }: { time: any }) => {
+    const [ restTime, setRestTime ] = useState<number>(10)
+    const onRestTimeChange = ({ time }: { time: number }) => {
         setRestTime(
-            (prev) => {
+            (prev: number) => {
                 if ( prev + time >= 0 ) {
                     return prev + time
                 }
@@ -116,7 +116,7 @@ const Home = () => {
     // set, reps, weight control
     const [currentSet, setCurrentSet] = useState<any>(0)
 
-    const onSetSelect = ({ index }: { index: any }) => {
+    const onSetSelect = ({ index }: { index: number }) => {
         setCurrentSet(index)
     }
   
@@ -282,25 +282,25 @@ const Home = () => {
                             >
                                 <div
                                 className = 'home__body__center__rest__buttons__10__plus to__center'
-                                onClick={() => onRestTimeChange(10)}
+                                onClick={() => onRestTimeChange({ time: 10 })}
                                 >
                                     + 10
                                 </div>
                                 <div
                                 className = 'home__body__center__rest__buttons__10__minus to__center'
-                                onClick={() => onRestTimeChange(-10)}
+                                onClick={() => onRestTimeChange({ time: -10 })}
                                 >
                                     - 10
                                 </div>
                                 <div
                                 className = 'home__body__center__rest__buttons__30__plus to__center'
-                                onClick={() => onRestTimeChange(30)}
+                                onClick={() => onRestTimeChange({ time: 30 })}
                                 >
                                     + 30
                                 </div>
                                 <div
                                 className = 'home__body__center__rest__buttons__30__minus to__center'
-                                onClick={() => onRestTimeChange(-30)}
+                                onClick={() => onRestTimeChange({ time: -30 })}
                                 >
                                     - 30
                                 </div>
@@ -330,12 +330,12 @@ const Home = () => {
                         onScroll={onRepScroll}
                         >
                             {
-                                Array.from({length: 52}, (_, index) => index).map(
+                                Array.from({length: 52}, (_, index: number) => index).map(
                                     (_, index) => {
                                         return(
                                             <div
                                             className = {`home__body__center__control__reps__scroll__each${index === selectedRep ? "__select" : "__unselect"} to__center`}
-                                            key = {index}
+                                            key = {index as number}
                                             ref = {(el) => scrollRepRefEach.current[index] = el}
                                             style={{
                                                 visibility: index === 0 || index === 51 ? "hidden" : "visible"
@@ -354,12 +354,12 @@ const Home = () => {
                         onScroll={onWeightScroll}
                         >
                             {
-                                Array.from({length: 202}, (_, index) => index).map(
+                                Array.from({length: 202}, (_, index: number) => index).map(
                                     (_, index) => {
                                         return(
                                             <div
                                             className = {`home__body__center__control__weight__scroll__each${index === selectedWeight ? "__select" : "__unselect"} to__center`}
-                                            key = {index}
+                                            key = {index as number}
                                             ref = {(el) => scrollWeightRefEach.current[index] = el}
                                             style={{
                                                 visibility: index === 0 || index === 201 ? "hidden" : "visible"
