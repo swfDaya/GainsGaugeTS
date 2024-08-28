@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 
 import './Home.css'
@@ -6,12 +6,12 @@ import './Home.css'
 const Home = () => {
 
     // home page ref
-    const homePageRef = useRef(null)
+    const homePageRef = useRef<HTMLDivElement>(null)
 
     // rep scroll controls
-    const [ selectedRep, setSelectedRep ] = useState(10)
-    const scrollRepRef = useRef(null)
-    const scrollRepRefEach = useRef([])
+    const [ selectedRep, setSelectedRep ] = useState<any[]>(10)
+    const scrollRepRef = useRef<HTMLDivElement>(null)
+    const scrollRepRefEach = useRef<HTMLDivElement>([])
 
     const onRepScroll = () => {
         if (scrollRepRef.current) {
@@ -20,9 +20,9 @@ const Home = () => {
     }
 
     // weight scroll controls
-    const [ selectedWeight, setSelectedWeight ] = useState(33)
-    const scrollWeightRef = useRef(null)
-    const scrollWeightRefEach = useRef([])
+    const [ selectedWeight, setSelectedWeight ] = useState<any[]>(33)
+    const scrollWeightRef = useRef<HTMLDivElement>(null)
+    const scrollWeightRefEach = useRef<HTMLDivElement>([])
 
     const onWeightScroll = () => {
         if (scrollWeightRef.current) {
@@ -47,11 +47,11 @@ const Home = () => {
     )
 
     // rendertime for rest countdown
-    const renderTime = ({ remainingTime }) => {
-        const currentTime = useRef(remainingTime);
-        const prevTime = useRef(null);
-        const isNewTimeFirstTick = useRef(false);
-        const [, setOneLastRerender] = useState(0);
+    const renderTime = ({ remainingTime }: { remainingTime: any }) => {
+        const currentTime = useRef<HTMLDivElement>(remainingTime);
+        const prevTime = useRef<HTMLDivElement>(null);
+        const isNewTimeFirstTick = useRef<HTMLDivElement>(false);
+        const [, setOneLastRerender] = useState<any[]>(0);
       
         if (currentTime.current !== remainingTime) {
           isNewTimeFirstTick.current = true;
@@ -89,15 +89,15 @@ const Home = () => {
 
     // countdown controls
 
-    const [ inRest, setInRest ] = useState(false)
+    const [ inRest, setInRest ] = useState<any[]>(false)
     const restSwitch = () => {
         setInRest(
             (prev) => prev ? false : true
         )
     }
 
-    const [ restTime, setRestTime ] = useState(10)
-    const onRestTimeChange = (time) => {
+    const [ restTime, setRestTime ] = useState<any[]>(10)
+    const onRestTimeChange = ({ time }: { time: any }) => {
         setRestTime(
             (prev) => {
                 if ( prev + time >= 0 ) {
@@ -108,15 +108,15 @@ const Home = () => {
         )
     }
 
-    const [ countDownKey, setCountDownKey ] = useState(0)
+    const [ countDownKey, setCountDownKey ] = useState<any[]>(0)
     const onCountDownKeyChange = () => {
         setCountDownKey((prev) => prev + 1)
     }
 
     // set, reps, weight control
-    const [currentSet, setCurrentSet] = useState(0)
+    const [currentSet, setCurrentSet] = useState<any[]>(0)
 
-    const onSetSelect = (index) => {
+    const onSetSelect = ({ index }: { index: any }) => {
         setCurrentSet(index)
     }
   
