@@ -1,0 +1,58 @@
+:root {
+  margin: 0;
+  padding: 0;
+
+  --white: #ffffff;
+  --ebonyClay: #2b2d42;
+  --lightGrey: #EDF2F4;
+  --regentGrey: #8d99ae;
+  --lightRed: #ef233c;
+  --darkRed: #c30425;
+  --shadeRed: #ffa5a5;
+  /* --darkRed: #d90429; */
+  --brightBlue: #0171E2;
+  --lightWhite: #e1e1e1;
+  /* --lightWhite: #fafafa; */
+
+  --darkOrange: #E16349;
+  --bgGrey: #F8F8F8;
+  --greyShade1: #B9B9B9;
+  --greyShade2: #DBDBDE;
+  --orangeShade1: #EFBBB0;
+  --orangeShade2: #F3D6D1;
+  --orangeShade3: #F6EBE9;
+  --eerieBlack: #353535;
+
+  --bgBlack: #dddddc;
+  --bgBlack2: #f5f5f4;
+
+  --squashYellow: #fca311;
+  --zodiacBlue: #14213d;
+  --electricBlue: #5B6477;
+  --zephyrBlue: #5b6477;
+  --romanSilver: #8a909e;
+  --harpBlue: #EAEDF2;
+
+  --paleGrey: #FDFDFD;
+  --azureBlue: #0588F8;
+  --trueBlue: #036fc6;
+  --blackCoral: #5a6268;
+  --auroMetal: #6c757d;
+  --encarnado: #FD0103;
+  --ultraRed: #FF6584;
+  --shuttleGrey: #5b6477;
+  --santaGrey: #a1a6b1;
+  --gooseGrey: #e8e9ec;
+  --slateGrey: #7c8392;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.to__center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
