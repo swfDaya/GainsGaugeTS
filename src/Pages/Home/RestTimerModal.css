@@ -1,0 +1,12 @@
+.rest__timer__modal__base {
+    height: 75svw;
+    width: 75svw;
+
+    background-color: darkblue;
+
+    position: fixed;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

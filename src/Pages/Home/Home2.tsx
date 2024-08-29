@@ -1,3 +1,4 @@
+import RestTimerModal from './RestTimerModal'
 
 import left from './assets/chevrons-left.svg'
 import right from './assets/chevrons-right.svg'
@@ -148,6 +149,9 @@ const Home2 = () => {
                 >
                     Finish Workout !
                 </div>
+                <RestTimerModal 
+                isRestTimerModalShow = {false}
+                />
             </div>
             <div
             className = 'home__body__right'
