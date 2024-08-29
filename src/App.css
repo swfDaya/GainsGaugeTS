@@ -4,3 +4,24 @@
   padding: 2rem;
   text-align: center; */
 }
+
+.app {
+  height: 100svh;
+  width: 100svw;
+
+  background-color: var(--antiWhite);
+}
+
+.app__header {
+  height: 50px;
+  width: 100%;
+
+  background-color: var(--azureBlue);
+}
+
+.app__footer {
+  height: 50px;
+  width: 100%;
+
+  background-color: var(--azureBlue);
+}

@@ -1,5 +1,5 @@
 .home__base {
-    height: 100svh;
+    height: 100vh;
     width: 100svw;
 
     background-color: white;
@@ -100,17 +100,18 @@
 
 .home__body__center__timer__container {
     display: grid;
-    grid-template-columns: 2fr 1fr 2fr 1fr 2fr;
+    grid-template-columns: 3fr 1fr 3fr 1fr 3fr;
     grid-template-rows: 1fr;
-    gap: 1rem;
+    /* gap: 1rem; */
 
-    border: .75px solid var(--santaGrey);
+    background-color: var(--eerieBlack);
+    color: white;
     border-radius: 10px;
 }
 
 .home__body__center__timer__pause {
-    background-color: var(--eerieBlack);
-    color: white;
+    border: .75px solid var(--santaGrey);
+    color: black;
 
     font-weight: bold;
     border-radius: 10px;
@@ -233,10 +234,11 @@
 
 .home__body__center__ex__details__header {
     display: grid;
-    grid-template-columns: 1fr 2fr 2fr;
+    grid-template-columns: 1fr 1.5fr 1.5fr;
     grid-template-rows: 1fr;
 
     border-bottom: .75px solid var(--santaGrey);
+    font-style: italic;
 }
 
 .home__body__center__ex__details__header > div {
@@ -258,7 +260,7 @@
     width: 100%;
 
     display: grid;
-    grid-template-columns: 1fr 2fr 2fr;
+    grid-template-columns: 1fr 1.5fr 1.5fr;
     grid-template-rows: 1fr;
 }
 
@@ -420,38 +422,6 @@
     /* background-color: var(--trueBlue); */
 }
 
-/* Small devices */
-@media only screen and (max-width: 600px) {
-
-    .home__body__left {
-        display: none;
-    }
-    
-    .home__body__center {
-        flex: 1;
-    }
-    
-    .home__body__right {
-        display: none;
-    }
-
-}
-
-/* Medium devices */
-@media only screen and (min-width: 600px) {
-    .home__body__left {
-        flex: 0.5;
-    }
-    
-    .home__body__center {
-        flex: 1;
-    }
-    
-    .home__body__right {
-        flex: 0.5;
-    }
-}
-
 .timer-wrapper {
     display: flex;
     justify-content: center;
@@ -490,6 +460,39 @@
     opacity: 0;
     transform: translateY(100%);
   }
+
+
+/* Small devices */
+@media only screen and (max-width: 600px) {
+
+    .home__body__left {
+        display: none;
+    }
+    
+    .home__body__center {
+        flex: 1;
+    }
+    
+    .home__body__right {
+        display: none;
+    }
+
+}
+
+/* Medium devices */
+@media only screen and (min-width: 600px) {
+    .home__body__left {
+        flex: 0.5;
+    }
+    
+    .home__body__center {
+        flex: 1;
+    }
+    
+    .home__body__right {
+        flex: 0.5;
+    }
+}
 
 /* Large devices */
 @media only screen and (min-width: 992px) {

@@ -1,12 +1,24 @@
 import './App.css'
-import Home from './Pages/Home/Home'
+import Home2 from './Pages/Home/Home2'
 
 function App() {
 
   return (
-    <>
-      <Home />
-    </>
+    <div
+    className = 'app'
+    >
+      <div
+      className = 'app__header'
+      >
+
+      </div>
+      <Home2 />
+      <div
+      className = 'app__footer'
+      >
+
+      </div>
+    </div>
   )
 }
 
