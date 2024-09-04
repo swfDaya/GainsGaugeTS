@@ -1,5 +1,14 @@
 import './App.css'
+import Home from './Pages/Home/Home';
 import Home2 from './Pages/Home/Home2'
+
+import {
+  RecoilRoot,
+  atom,
+  selector,
+  useRecoilState,
+  useRecoilValue,
+} from 'recoil';
 
 function App() {
 
@@ -12,7 +21,10 @@ function App() {
       >
 
       </div>
-      <Home2 />
+      <RecoilRoot>
+        <Home2 />
+        {/* <Home /> */}
+      </RecoilRoot>
       <div
       className = 'app__footer'
       >
