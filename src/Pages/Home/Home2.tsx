@@ -1,6 +1,6 @@
 // import RestTimerModal from './RestTimerModal'
-import { useRecoilState } from 'recoil'
-import isRestTimerModalShowAtom from '../Recoil/Atom/ReactTimerModalAtom'
+// import { useRecoilState } from 'recoil'
+// import isRestTimerModalShowAtom from '../Recoil/Atom/ReactTimerModalAtom'
 
 import {useState, useEffect, useRef} from 'react';
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
