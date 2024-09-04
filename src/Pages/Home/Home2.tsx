@@ -13,7 +13,7 @@ const Home2 = () => {
 
     // recoil for rest timer modal
     // const [ isRestTimerModalShow, setIsRestTimerModalShow ] = useRecoilState(isRestTimerModalShowAtom)
-    const [ _, setIsRestTimerModalShow ] = useRecoilState(isRestTimerModalShowAtom)
+    // const [ _, setIsRestTimerModalShow ] = useRecoilState(isRestTimerModalShowAtom)
 
     // const manageRestTimerModal = ( value: boolean ) => {
     //     if (value) {
@@ -79,7 +79,8 @@ const Home2 = () => {
         setCountDownKey((prev: number) => prev + 1)
     }
 
-    const [ restTime, setRestTime ] = useState<number>(10)
+    // const [ restTime, setRestTime ] = useState<number>(10)
+    const [ restTime, _ ] = useState<number>(10)
     // const onRestTimeChange = ({ time }: { time: number }) => {
     //     setRestTime(
     //         (prev: number) => {
