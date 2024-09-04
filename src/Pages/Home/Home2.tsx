@@ -97,6 +97,10 @@ const Home2 = () => {
             onCountDownKeyChange()
         }, []
     )
+
+    // rest scroll flip controls
+
+    const [ setOrRest, setSetOrRest ] = useState(false)
   
     return (
         <div
@@ -239,36 +243,106 @@ const Home2 = () => {
                 className = 'home__body__center__rest__details'
                 >
                     <div
-                    className = 'home__body__center__rest__countdown__base to__center'
+                    // className = 'home__body__center__rest__details__top'
+                    className = {`home__body__center__rest__details__top__${setOrRest ? "rest" : "set"}`}
                     >
-                        <CountdownCircleTimer
-                        key={countDownKey}
-                        isPlaying={inRest}
-                        duration={restTime}
-                        colors={"#0D0D0D"}
-                        onComplete={
-                            () => {
-                                restSwitch()
-                                onCountDownKeyChange()
-                                return { shouldRepeat: true }
-                            }
+                        {
+                            setOrRest ?
+                            <>
+                                <div
+                                className = 'home__body__center__rest__countdown__base to__center'
+                                >
+                                    <CountdownCircleTimer
+                                    key={countDownKey}
+                                    isPlaying={inRest}
+                                    duration={restTime}
+                                    colors={"#0D0D0D"}
+                                    onComplete={
+                                        () => {
+                                            restSwitch()
+                                            onCountDownKeyChange()
+                                            return { shouldRepeat: true }
+                                        }
+                                    }
+                                    >
+                                        {renderTime}
+                                    </CountdownCircleTimer>
+                                </div>
+                                <div
+                                className = 'home__body__center__rest__buttons__base'
+                                >
+                                    <div>+10</div>
+                                    <div>-10</div>
+                                    <div>+30</div>
+                                    <div>+30</div>
+                                </div>
+                            </>
+                            :
+                            <>
+                                <div
+                                className = 'home__body__center__scroll__top'
+                                >
+                                    <div
+                                    className = 'home__body__center__scroll__top__content to__center'
+                                    >
+                                        reps
+                                    </div>
+                                    <div
+                                    className = 'home__body__center__scroll__top__scroll'
+                                    >
+                                        <div
+                                        className = 'home__body__center__scroll__top__scroll__top to__center'
+                                        >
+                                            <div className = 'home__body__center__scroll__top__scroll__top__block' ></div>
+                                        </div>
+                                        <div
+                                        className = 'home__body__center__scroll__top__scroll'
+                                        >
+                                            
+                                        </div>
+                                        <div
+                                        className = 'home__body__center__scroll__top__scroll__bottom to__center'
+                                        >
+                                            <div className = 'home__body__center__scroll__top__scroll__bottom__block' ></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                className = 'home__body__center__scroll__bottom'
+                                >
+                                    <div
+                                    className = 'home__body__center__scroll__bottom__content to__center'
+                                    >
+                                        kg
+                                    </div>
+                                    <div
+                                    className = 'home__body__center__scroll__top__scroll'
+                                    >
+                                        <div
+                                        className = 'home__body__center__scroll__top__scroll__top to__center'
+                                        >
+                                            <div className = 'home__body__center__scroll__top__scroll__top__block' ></div>
+                                        </div>
+                                        <div
+                                        className = 'home__body__center__scroll__top__scroll'
+                                        >
+                                            
+                                        </div>
+                                        <div
+                                        className = 'home__body__center__scroll__top__scroll__bottom to__center'
+                                        >
+                                            <div className = 'home__body__center__scroll__top__scroll__bottom__block' ></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </>
                         }
-                        >
-                            {renderTime}
-                        </CountdownCircleTimer>
-                    </div>
-                    <div
-                    className = 'home__body__center__rest__buttons__base'
-                    >
-                        <div>+10</div>
-                        <div>-10</div>
-                        <div>+30</div>
-                        <div>+30</div>
                     </div>
                     <div
                     className = 'home__body__center__rest__cta__base to__center'
+                    onClick={() => setSetOrRest(setOrRest ? false : true) }
                     >
-                        Start Rest ?
+                        { setOrRest ? "Back to Workout ?" : "Start Rest ?" }
                     </div>
                 </div>
                 {/* <div
