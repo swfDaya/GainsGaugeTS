@@ -1,13 +1,13 @@
 import './App.css'
-import Home from './Pages/Home/Home';
+// import Home from './Pages/Home/Home';
 import Home2 from './Pages/Home/Home2'
 
 import {
   RecoilRoot,
-  atom,
-  selector,
-  useRecoilState,
-  useRecoilValue,
+  // atom,
+  // selector,
+  // useRecoilState,
+  // useRecoilValue,
 } from 'recoil';
 
 function App() {

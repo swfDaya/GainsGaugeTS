@@ -1,8 +1,8 @@
-import RestTimerModal from './RestTimerModal'
+// import RestTimerModal from './RestTimerModal'
 import { useRecoilState } from 'recoil'
 import isRestTimerModalShowAtom from '../Recoil/Atom/ReactTimerModalAtom'
 
-import React, {useState, useEffect, useRef} from 'react';
+import {useState, useEffect, useRef} from 'react';
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 
 import left from './assets/chevrons-left.svg'
@@ -12,16 +12,17 @@ import './Home2.css'
 const Home2 = () => {
 
     // recoil for rest timer modal
-    const [ isRestTimerModalShow, setIsRestTimerModalShow ] = useRecoilState(isRestTimerModalShowAtom)
+    // const [ isRestTimerModalShow, setIsRestTimerModalShow ] = useRecoilState(isRestTimerModalShowAtom)
+    const [ _, setIsRestTimerModalShow ] = useRecoilState(isRestTimerModalShowAtom)
 
-    const manageRestTimerModal = ( value: boolean ) => {
-        if (value) {
-            setIsRestTimerModalShow(true)
-        }
-        else {
-            setIsRestTimerModalShow(false)
-        }
-    }
+    // const manageRestTimerModal = ( value: boolean ) => {
+    //     if (value) {
+    //         setIsRestTimerModalShow(true)
+    //     }
+    //     else {
+    //         setIsRestTimerModalShow(false)
+    //     }
+    // }
 
     // rendertime for rest countdown
     const renderTime = ({ remainingTime }: { remainingTime: any }) => {
@@ -79,16 +80,16 @@ const Home2 = () => {
     }
 
     const [ restTime, setRestTime ] = useState<number>(10)
-    const onRestTimeChange = ({ time }: { time: number }) => {
-        setRestTime(
-            (prev: number) => {
-                if ( prev + time >= 0 ) {
-                    return prev + time
-                }
-                else return prev
-            }
-        )
-    }
+    // const onRestTimeChange = ({ time }: { time: number }) => {
+    //     setRestTime(
+    //         (prev: number) => {
+    //             if ( prev + time >= 0 ) {
+    //                 return prev + time
+    //             }
+    //             else return prev
+    //         }
+    //     )
+    // }
 
     useEffect(
         () => {
