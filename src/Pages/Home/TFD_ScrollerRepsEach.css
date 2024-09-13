@@ -1,0 +1,24 @@
+.home__body__center__ex__scroller__base__reps__control__container__each__inCenter {
+    /* min-height: 33%; */
+    height: 100%;
+    width: 100%;
+
+    /* background-color: var(--paleBlue); */
+
+    scroll-snap-align: center;
+
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.home__body__center__ex__scroller__base__reps__control__container__each__notCenter {
+    /* min-height: 20%; */
+    min-height: 33%;
+    width: 100%;
+
+    /* background-color: var(--paleBlue); */
+
+    scroll-snap-align: center;
+
+    font-size: 1rem;
+}

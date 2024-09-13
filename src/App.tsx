@@ -1,14 +1,16 @@
 import './App.css'
 // import Home from './Pages/Home/Home';
-import Home2 from './Pages/Home/Home2'
+// import Home2 from './Pages/Home/Home2'
+import TrackingForDay from './Pages/Home/TrackingForDay';
 
-import {
-  RecoilRoot,
-  // atom,
-  // selector,
-  // useRecoilState,
-  // useRecoilValue,
-} from 'recoil';
+
+// import {
+//   RecoilRoot,
+//   // atom,
+//   // selector,
+//   // useRecoilState,
+//   // useRecoilValue,
+// } from 'recoil';
 
 function App() {
 
@@ -21,10 +23,7 @@ function App() {
       >
 
       </div>
-      <RecoilRoot>
-        <Home2 />
-        {/* <Home /> */}
-      </RecoilRoot>
+      <TrackingForDay />
       <div
       className = 'app__footer'
       >

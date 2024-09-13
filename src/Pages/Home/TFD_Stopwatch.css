@@ -1,0 +1,46 @@
+.home__body__center__clock__base {
+    height: 100px;
+    grid-column: 1/13;
+
+    /* background-color: lightcoral; */
+
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+.home__body__center__clock {
+    background-color: var(--smokyBlack);
+    color: white;
+
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr 1fr 2fr;
+
+    font-size: 1.5rem;
+}
+
+.home__body__center__clock__buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+.home__body__center__clock__buttons__pause {
+    flex: 1;
+    background-color: var(--lavendar);
+
+    border: 0.5px solid var(--santaGrey);
+
+    font-weight: bold;
+}
+
+.home__body__center__clock__buttons__reset {
+    flex: 1;
+    background-color: var(--paleBlue);
+
+    border: 0.5px solid var(--santaGrey);
+
+    font-weight: bold;
+}

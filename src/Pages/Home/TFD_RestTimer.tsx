@@ -1,10 +1,9 @@
-import {useState, useRef, useEffect} from 'react'
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
+import {useState, useEffect, useRef} from 'react';
 
-import './RestTimerModal.css'
+import './TFD_RestTimer.css'
 
-// const RestTimerModal = ({manageRestTimerModal}:{manageRestTimerModal: (value: boolean) => void}) => {
-const RestTimerModal = () => {
+const TFD_RestTimer = () => {
 
     // rendertime for rest countdown
     const renderTime = ({ remainingTime }: { remainingTime: any }) => {
@@ -61,17 +60,18 @@ const RestTimerModal = () => {
         setCountDownKey((prev: number) => prev + 1)
     }
 
-    const [ restTime, setRestTime ] = useState<number>(10)
-    const onRestTimeChange = ({ time }: { time: number }) => {
-        setRestTime(
-            (prev: number) => {
-                if ( prev + time >= 0 ) {
-                    return prev + time
-                }
-                else return prev
-            }
-        )
-    }
+    // const [ restTime, setRestTime ] = useState<number>(10)
+    const [ restTime, _ ] = useState<number>(10)
+    // const onRestTimeChange = ({ time }: { time: number }) => {
+    //     setRestTime(
+    //         (prev: number) => {
+    //             if ( prev + time >= 0 ) {
+    //                 return prev + time
+    //             }
+    //             else return prev
+    //         }
+    //     )
+    // }
 
     useEffect(
         () => {
@@ -81,16 +81,16 @@ const RestTimerModal = () => {
 
     return (
         <div
-        className = 'rest__timer__modal__base'
+        className = 'home__body__center__rest__details__top__rest'
         >
             <div
-            className = 'home__body__center__rest__clock to__center'
+            className = 'home__body__center__rest__countdown__base to__center'
             >
                 <CountdownCircleTimer
                 key={countDownKey}
                 isPlaying={inRest}
                 duration={restTime}
-                colors={"#FEE1B6"}
+                colors={"#0D0D0D"}
                 onComplete={
                     () => {
                         restSwitch()
@@ -103,41 +103,15 @@ const RestTimerModal = () => {
                 </CountdownCircleTimer>
             </div>
             <div
-            className = 'home__body__center__rest__buttons'
+            className = 'home__body__center__rest__buttons__base'
             >
-                <div
-                className = 'home__body__center__rest__buttons__10__plus to__center'
-                onClick={() => onRestTimeChange({ time: 10 })}
-                >
-                    + 10
-                </div>
-                <div
-                className = 'home__body__center__rest__buttons__10__minus to__center'
-                onClick={() => onRestTimeChange({ time: -10 })}
-                >
-                    - 10
-                </div>
-                <div
-                className = 'home__body__center__rest__buttons__30__plus to__center'
-                onClick={() => onRestTimeChange({ time: 30 })}
-                >
-                    + 30
-                </div>
-                <div
-                className = 'home__body__center__rest__buttons__30__minus to__center'
-                onClick={() => onRestTimeChange({ time: -30 })}
-                >
-                    - 30
-                </div>
-            </div>
-            <div
-            className = 'home__body__center__back to__center'
-            // onClick={() => manageRestTimerModal(false)}
-            >
-                Back to Work ?
+                <div>+ 10 s</div>
+                <div>- 10 s</div>
+                <div>+ 30 s</div>
+                <div>- 30 s</div>
             </div>
         </div>
     )
 }
 
-export default RestTimerModal
+export default TFD_RestTimer

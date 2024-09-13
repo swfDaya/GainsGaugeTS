@@ -9,6 +9,8 @@ import left from './assets/chevrons-left.svg'
 import right from './assets/chevrons-right.svg'
 import './Home2.css'
 
+import ReactCardFlip from 'react-card-flip';
+
 const Home2 = () => {
 
     // recoil for rest timer modal
@@ -99,8 +101,42 @@ const Home2 = () => {
     )
 
     // rest scroll flip controls
+    const [ selectedRep, setSelectedRep ] = useState<any>(25)
+    const scrollRepRef = useRef<HTMLDivElement>(null)
+    const scrollRepRefEach = useRef<(HTMLDivElement | null)[]>([])
+    const onRepScroll = () => {
+        if (scrollRepRef.current) {
+            setSelectedRep(Math.ceil(scrollRepRef.current.scrollLeft/scrollRepRef.current.scrollWidth * 52)+1)
+        }
+    }
 
-    const [ setOrRest, setSetOrRest ] = useState(false)
+    const [ selectedWeight, setSelectedWeight ] = useState<any>(33)
+    const scrollWeightRef = useRef<HTMLDivElement>(null)
+    const scrollWeightRefEach = useRef<(HTMLDivElement | null)[]>([])
+
+    const onWeightScroll = () => {
+        if (scrollWeightRef.current) {
+            setSelectedWeight(Math.ceil(scrollWeightRef.current.scrollTop/scrollWeightRef.current.scrollHeight * 202)+1)
+        }
+    }
+
+    // scroll on page load
+    useEffect(
+        () => {
+            setTimeout(
+                () => {
+                    scrollRepRefEach.current[selectedRep as number]!.scrollIntoView()
+                }, 1000
+            )
+            // setTimeout(
+            //     () => {
+            //         scrollWeightRefEach.current[selectedWeight as number]!.scrollIntoView()
+            //     }, 2000
+            // )
+        }, []
+    )
+
+    const [ setOrRest, setSetOrRest ] = useState(true)
   
     return (
         <div
@@ -243,12 +279,16 @@ const Home2 = () => {
                 className = 'home__body__center__rest__details'
                 >
                     <div
-                    // className = 'home__body__center__rest__details__top'
-                    className = {`home__body__center__rest__details__top__${setOrRest ? "rest" : "set"}`}
+                    className = 'home__body__center__rest__details__top'
+                    // className = {`home__body__center__rest__details__top__${setOrRest ? "rest" : "set"}`}
                     >
-                        {
-                            setOrRest ?
-                            <>
+                        <ReactCardFlip
+                        isFlipped={setOrRest} 
+                        flipDirection="horizontal"
+                        >
+                            <div
+                            className = 'home__body__center__rest__details__top__rest'
+                            >
                                 <div
                                 className = 'home__body__center__rest__countdown__base to__center'
                                 >
@@ -276,35 +316,56 @@ const Home2 = () => {
                                     <div>+30</div>
                                     <div>+30</div>
                                 </div>
-                            </>
-                            :
-                            <>
+                            </div>
+                            <div
+                            className = 'home__body__center__rest__details__top__set'
+                            >
                                 <div
                                 className = 'home__body__center__scroll__top'
                                 >
                                     <div
                                     className = 'home__body__center__scroll__top__content to__center'
                                     >
-                                        reps
+                                        reps {selectedRep}
                                     </div>
                                     <div
                                     className = 'home__body__center__scroll__top__scroll'
                                     >
-                                        <div
+                                        {/* <div
                                         className = 'home__body__center__scroll__top__scroll__top to__center'
                                         >
                                             <div className = 'home__body__center__scroll__top__scroll__top__block' ></div>
-                                        </div>
+                                        </div> */}
                                         <div
-                                        className = 'home__body__center__scroll__top__scroll'
+                                        className = 'home__body__center__scroll__top__scroll__container'
+                                        ref = {scrollRepRef}
+                                        onScroll={onRepScroll}
                                         >
-                                            
+                                            {
+                                                Array.from({length: 52}, (_, index) => index).map(
+                                                    (_, index) => {
+                                                        return(
+                                                            <div
+                                                            className = 'home__body__center__scroll__top__scroll__container__each to__center'
+                                                            style={{
+                                                                fontWeight: index === selectedRep ? "bold" : "",
+                                                                color: index === selectedRep ? "#0588F8" : "black",
+                                                                fontSize: index === selectedRep ? "2rem" : "1rem"
+                                                            }}
+                                                            ref = {(el) => scrollRepRefEach.current[index] = el}
+                                                            >
+                                                                {index}
+                                                            </div>
+                                                        )
+                                                    }
+                                                )
+                                            }
                                         </div>
-                                        <div
+                                        {/* <div
                                         className = 'home__body__center__scroll__top__scroll__bottom to__center'
                                         >
                                             <div className = 'home__body__center__scroll__top__scroll__bottom__block' ></div>
-                                        </div>
+                                        </div> */}
                                     </div>
                                 </div>
                                 <div
@@ -318,31 +379,51 @@ const Home2 = () => {
                                     <div
                                     className = 'home__body__center__scroll__top__scroll'
                                     >
-                                        <div
+                                        {/* <div
                                         className = 'home__body__center__scroll__top__scroll__top to__center'
                                         >
                                             <div className = 'home__body__center__scroll__top__scroll__top__block' ></div>
-                                        </div>
+                                        </div> */}
                                         <div
-                                        className = 'home__body__center__scroll__top__scroll'
+                                        className = 'home__body__center__scroll__bottom__scroll__container'
+                                        ref = {scrollWeightRef}
+                                        onScroll={onWeightScroll}
                                         >
+                                            {
+                                                Array.from({length: 202}, (_, index: number) => index).map(
+                                                    (_, index) => {
+                                                        return(
+                                                            <div
+                                                            className = {`home__body__center__control__weight__scroll__each${index === selectedWeight ? "__select" : "__unselect"} to__center`}
+                                                            key = {index as number}
+                                                            ref = {(el) => scrollWeightRefEach.current[index] = el}
+                                                            style={{
+                                                                visibility: index === 0 || index === 201 ? "hidden" : "visible"
+                                                            }}
+                                                            >
+                                                                {index * 0.25}
+                                                            </div>
+                                                        )
+                                                    }
+                                                )
+                                            }
                                             
                                         </div>
-                                        <div
+                                        {/* <div
                                         className = 'home__body__center__scroll__top__scroll__bottom to__center'
                                         >
                                             <div className = 'home__body__center__scroll__top__scroll__bottom__block' ></div>
-                                        </div>
+                                        </div> */}
                                     </div>
                                 </div>
-                            </>
-                        }
+                            </div>
+                        </ReactCardFlip>
                     </div>
                     <div
                     className = 'home__body__center__rest__cta__base to__center'
                     onClick={() => setSetOrRest(setOrRest ? false : true) }
                     >
-                        { setOrRest ? "Back to Workout ?" : "Start Rest ?" }
+                        { setOrRest ? "Start Rest ?" : "Back to Workout ?" }
                     </div>
                 </div>
                 {/* <div

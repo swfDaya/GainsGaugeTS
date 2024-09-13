@@ -1,0 +1,22 @@
+.home__body__center__ex__control__rest {
+    height: calc(300px + 3rem);
+    grid-column: 1/13;
+
+    /* background-color: lightblue; */
+
+    display: grid;
+    grid-template-rows: calc(250px + 2rem) 50px ;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+.home__body__center__ex__control__rest__flip {
+    border: 0.75px solid var(--santaGrey);
+}
+
+.home__body__center__ex__control__rest__flip__button {
+    border: 0.75px solid var(--santaGrey);
+    background-color: var(--paleBlue);
+
+    font-weight: bold;
+}

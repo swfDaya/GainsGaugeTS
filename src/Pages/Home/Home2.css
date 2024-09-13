@@ -298,6 +298,11 @@
     grid-template-rows: calc(250px + 2rem) 50px;
 }
 
+.home__body__center__rest__details__top {
+    height: calc(250px + 2rem);
+    grid-column: 1/13;
+}
+
 .home__body__center__rest__details__top__rest {
     height: calc(250px + 2rem);
     grid-column: 1/13;
@@ -326,7 +331,7 @@
 
 .home__body__center__scroll__top {
     display: grid;
-    grid-template-rows: 25px 1fr;
+    grid-template-rows: 50px 1fr;
     grid-template-columns: 1fr;
 }
 
@@ -337,11 +342,16 @@
 
 .home__body__center__scroll__top__scroll {
     display: grid;
-    grid-template-rows: 15px 1fr 15px;
+    /* grid-template-rows: 15px 1fr 15px; */
+    grid-template-rows: 1fr;
     grid-template-columns: 1fr;
 
     padding-top: 10px;
     padding-bottom: 10px;
+
+    overflow: hidden;
+
+    /* background-color: aliceblue; */
 }
 
 .home__body__center__scroll__top__scroll__top__block {
@@ -350,9 +360,39 @@
     background-color: var(--smokyBlack);
 }
 
+.home__body__center__scroll__top__scroll__container {
+    /* background-color: aqua; */
+
+    overflow-x: scroll;
+
+    display: flex;
+    flex-direction: row;
+
+    /* font-size: 1.25rem; */
+    /* font-weight: bold; */
+
+    scroll-snap-type: x mandatory;
+}
+
+.home__body__center__scroll__top__scroll__container {
+    -ms-overflow-style: none; /* for Internet Explorer, Edge */
+    scrollbar-width: none; /* for Firefox */
+    /* overflow-y: scroll; */
+}
+.home__body__center__scroll__top__scroll__container::-webkit-scrollbar {
+    display: none; /* for Chrome, Safari, and Opera */
+}
+
+.home__body__center__scroll__top__scroll__container__each {
+    height: 100%;
+    min-width: 20vw;
+
+    scroll-snap-align: center;
+}
+
 .home__body__center__scroll__bottom {
     display: grid;
-    grid-template-rows: 25px 1fr;
+    grid-template-rows: 50px 1fr;
     grid-template-columns: 1fr;
 }
 
@@ -365,6 +405,20 @@
     height: 100%;
     min-width: 2px;
     background-color: var(--smokyBlack);
+}
+
+.home__body__center__scroll__bottom__scroll__container {
+    /* background-color: aqua; */
+
+    display: flex;
+    flex-direction: row;
+}
+
+.home__body__center__control__weight__scroll__each__unselect {
+    height: 80%;
+    min-width: 25%;
+    background-color: lightblue;
+
 }
 
 .home__body__center__rest__buttons__base {
